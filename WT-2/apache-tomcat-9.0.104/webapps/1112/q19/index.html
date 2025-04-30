@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Search</title>
+</head>
+<body>
+
+<h2>Search Student by Name</h2>
+<form action="SearchByName" method="post">
+    Enter part of name: <input type="text" name="searchName" required>
+    <input type="submit" value="Search">
+</form>
+
+<hr>
+
+<h2>Search Student by Department</h2>
+<form action="SearchByDepartment" method="post">
+    Select Department:
+    <select name="deptName" id="deptDropdown">
+        <!-- This will be filled dynamically by servlet -->
+    </select>
+    <input type="submit" value="Search">
+</form>
+
+<script>
+// Fetch department names dynamically
+fetch('GetDepartments')
+.then(response => response.json())
+.then(data => {
+    const dropdown = document.getElementById('deptDropdown');
+    data.forEach(dept => {
+        const option = document.createElement('option');
+        option.value = dept;
+        option.textContent = dept;
+        dropdown.appendChild(option);
+    });
+});
+</script>
+
+</body>
+</html>

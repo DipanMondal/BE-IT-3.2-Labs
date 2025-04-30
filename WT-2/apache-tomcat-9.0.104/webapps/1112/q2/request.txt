@@ -1,0 +1,3 @@
+GET /1112/ass1/q1/first.html HTTP/1.1
+Host: 172.16.4.228
+Connectioon: close

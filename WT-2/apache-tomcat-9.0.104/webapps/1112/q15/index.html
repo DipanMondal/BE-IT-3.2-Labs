@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factorial Table using Web Worker</title>
+</head>
+<body>
+    <h2>Factorial Table Generator</h2>
+    <label for="num">Enter a number: </label>
+    <input type="number" id="num" value="5">
+    <button onclick="generateFactorial()">Generate</button>
+
+    <h3>Factorial Table:</h3>
+    <ul id="output"></ul>
+
+    <script>
+        if (window.Worker) {
+            const worker = new Worker("worker.js");
+
+            function generateFactorial() {
+                const number = document.getElementById("num").value;
+                document.getElementById("output").innerHTML = ""; // Clear previous results
+                worker.postMessage(number); // Send number to worker
+            }
+
+            worker.onmessage = function(event) {
+                const results = event.data;
+                const output = document.getElementById("output");
+                results.forEach(item => {
+                    let li = document.createElement("li");
+                    li.textContent = item;
+                    output.appendChild(li);
+                });
+            };
+        } else {
+            alert("Your browser does not support Web Workers!");
+        }
+    </script>
+</body>
+</html>

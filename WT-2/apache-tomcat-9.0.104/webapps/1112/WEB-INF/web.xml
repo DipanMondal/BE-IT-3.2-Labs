@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+                             http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+
+    <display-name>1112</display-name>
+	
+	<!-- jsp libs -->
+	
+	<servlet>
+		<servlet-name>jsp</servlet-name>
+		<servlet-class>org.apache.jasper.servlet.JspServlet</servlet-class>
+		<init-param>
+			<param-name>modificationsTestInterval</param-name>
+			<param-value>0</param-value>
+		</init-param>
+		<init-param>
+			<param-name>checkInterval</param-name>
+			<param-value>0</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>jsp</servlet-name>
+		<url-pattern>*.jsp</url-pattern>
+	</servlet-mapping>
+
+	
+	<!-- Q8 -->
+	
+	<servlet>
+        <servlet-name>Subjects</servlet-name>
+        <servlet-class>Subjects</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Subjects</servlet-name>
+        <url-pattern>/q8/subjects</url-pattern>
+    </servlet-mapping>
+	
+	<!-- Q9 -->
+	
+	<servlet>
+        <servlet-name>DistrictInfoServlet</servlet-name>
+        <servlet-class>DistrictInfoServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>DistrictInfoServlet</servlet-name>
+        <url-pattern>/q9/districtInfo</url-pattern>
+    </servlet-mapping>
+	
+	<servlet>
+        <servlet-name>DistrictsServlet</servlet-name>
+        <servlet-class>DistrictsServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>DistrictsServlet</servlet-name>
+        <url-pattern>/q9/districts</url-pattern>
+    </servlet-mapping>
+	
+	<!-- Q16 -->
+	
+	<servlet>
+        <servlet-name>HelloWorldServlet</servlet-name>
+        <servlet-class>HelloWorldServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>HelloWorldServlet</servlet-name>
+        <url-pattern>/q16/hello</url-pattern>
+    </servlet-mapping>
+	
+	<!-- Q19 -->
+	
+	<servlet>
+		<servlet-name>GetDepartments</servlet-name>
+		<servlet-class>GetDepartments</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>GetDepartments</servlet-name>
+		<url-pattern>/q19/GetDepartments</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>SearchByName</servlet-name>
+		<servlet-class>SearchByName</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>SearchByName</servlet-name>
+		<url-pattern>/q19/SearchByName</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>SearchByDepartment</servlet-name>
+		<servlet-class>SearchByDepartment</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>SearchByDepartment</servlet-name>
+		<url-pattern>/q19/SearchByDepartment</url-pattern>
+	</servlet-mapping>
+
+
+</web-app>

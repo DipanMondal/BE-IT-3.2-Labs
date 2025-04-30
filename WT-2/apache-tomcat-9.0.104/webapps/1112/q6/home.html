@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <script>
+        let idleTime = 0; // Time in seconds
+
+        // Reset idle time on user activity
+        function resetIdleTime() {
+            idleTime = 0;
+        }
+
+        // Increment idle time every second
+        function startIdleTimer() {
+            setInterval(() => {
+                idleTime++;
+                if (idleTime >= 10) { // Redirect after 10 seconds of inactivity
+                    window.location.href = "/1112/ass1/q6/logout.html";
+                }
+            }, 1000);
+        }
+
+        // Add event listeners for user activity
+        function monitorActivity() {
+            document.addEventListener("mousemove", resetIdleTime);
+            document.addEventListener("keydown", resetIdleTime);
+            document.addEventListener("click", resetIdleTime);
+            document.addEventListener("scroll", resetIdleTime);
+        }
+
+        // Initialize on page load
+        window.onload = function() {
+            monitorActivity();
+            startIdleTimer();
+        };
+    </script>
+</head>
+<body>
+    <div>
+        <h1>Welcome to the Home Page</h1><br />
+        <p>If you are idle for 10 seconds, you will be redirected to the logout page.</p>
+    </div>
+</body>
+</html>

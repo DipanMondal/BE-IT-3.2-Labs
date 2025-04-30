@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>State and District Selector</title>
+    <script>
+        function fetchDistricts() {
+            const state = document.getElementById("state").value;
+
+            // Clear the district dropdown
+            const districtDropdown = document.getElementById("district");
+            districtDropdown.innerHTML = "<option value=''>Select District</option>";
+
+            if (state) {
+                const xhr = new XMLHttpRequest();
+                xhr.open("GET", `/1112/q9/districts?state=${state}`, true);
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        const districts = xhr.responseText.split(",");
+                        districts.forEach(district => {
+                            const option = document.createElement("option");
+                            option.value = district;
+                            option.textContent = district;
+                            districtDropdown.appendChild(option);
+                        });
+                        document.getElementById("districtDiv").style.display = "block";
+                    }
+                };
+                xhr.send();
+            } else {
+                document.getElementById("districtDiv").style.display = "none";
+            }
+        }
+
+        function showDistrictInfo() {
+            const state = document.getElementById("state").value;
+            const district = document.getElementById("district").value;
+
+            if (state && district) {
+                window.location.href = `/1112/q9/districtInfo?state=${state}&district=${district}`;
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Select State and District</h1>
+    <form>
+        <!-- State Dropdown -->
+        <label for="state">Select State:</label>
+        <select id="state" name="state" onchange="fetchDistricts()">
+            <option value="">Select State</option>
+            <option value="West Bengal">West Bengal</option>
+            <option value="Maharashtra">Maharashtra</option>
+            <option value="Karnataka">Karnataka</option>
+            <option value="Tamil Nadu">Tamil Nadu</option>
+            <option value="Uttar Pradesh">Uttar Pradesh</option>
+        </select>
+
+        <!-- District Dropdown (initially hidden) -->
+        <div id="districtDiv" style="display: none;">
+            <label for="district">Select District:</label>
+            <select id="district" name="district" onchange="showDistrictInfo()">
+                <option value="">Select District</option>
+            </select>
+        </div>
+    </form>
+</body>
+</html>

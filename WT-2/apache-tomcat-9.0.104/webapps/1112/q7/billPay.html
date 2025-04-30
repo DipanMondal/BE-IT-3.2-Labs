@@ -1,0 +1,60 @@
+<html>
+	<head>
+		<title>Bill Payment</title>
+	</head>
+	<body>
+		<form id="payment_form">
+			<p>Please select your Payment Method:</p>
+			<input type="radio" id="payNow" name="payment" value="payNow" onclick="closeTextBox()">
+			<label for="payNow">Pay Now</label><br>
+			<input type="radio" id="payLater" name="payment" value="payLater" onclick="openTextBox()">
+			<label for="payLater">Pay Later</label><br>
+			
+			<input type="submit" value="Submit">
+		</form>
+		
+		<script>
+			//flag to controll the number of text area
+			let ind=0; // 1: text area is present 2: text area is not present
+			
+			
+			function openTextBox(){
+				if(ind==0){
+					// get the form element
+					var payment_form = document.getElementById("payment_form");
+					
+					//create the label for text area
+					var text_label = document.createElement('LABEL');
+					text_label.setAttribute('id', 'date-label');
+					text_label.innerHTML="Enter the date : ";
+					
+					// create the text area 
+					var text_area = document.createElement('TEXTAREA');
+					text_area.setAttribute('name', 'date');
+					text_area.setAttribute('id', 'date');
+					text_area.setAttribute('maxlength', 10);
+					
+					//append the childs
+					payment_form.appendChild(text_label);
+					payment_form.appendChild(text_area);
+					
+					//change the flag
+					ind=1;
+				}
+			};
+			
+			
+			function closeTextBox(){
+				if(ind==1){
+					var x = document.getElementById("date-label");
+					x.remove();
+					
+					var x = document.getElementById("date");
+					x.remove();
+					
+					ind = 0;
+				}
+			}
+		</script>
+	</body>
+</html>

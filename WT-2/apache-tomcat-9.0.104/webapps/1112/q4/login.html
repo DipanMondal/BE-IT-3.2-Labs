@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Validation</title>
+</head>
+<body>
+    <div>
+        <h1>Login</h1>
+        <form id="loginForm">
+            <label for="username">Login Name:</label>
+            <input type="text" id="username" name="username" placeholder="Enter your login name" required>
+            <span id="usernameError" class="error-message"></span>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            <span id="passwordError" class="error-message"></span>
+
+            <button type="button" onclick="validateForm()">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        function validateForm() {
+            // alert the user         
+            alert("Form submitted successfully!");
+        }
+    </script>
+</body>
+</html>

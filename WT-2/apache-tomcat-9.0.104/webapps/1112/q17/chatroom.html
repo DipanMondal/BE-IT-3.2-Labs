@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chatroom</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="chat-container">
+        <h2>Chatroom</h2>
+        <div id="chat-box"></div>
+        <input type="text" id="message" placeholder="Type your message...">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+
+    <script>
+        var username = sessionStorage.getItem('username');
+        if (!username) {
+            window.location.href = "index.html"; // No username? Back to home
+        }
+
+        var socket = new WebSocket("ws://" + window.location.host + "/1112/chat");
+
+        socket.onopen = function() {
+            console.log("Connected to chat server");
+        };
+
+        socket.onmessage = function(event) {
+            var chatBox = document.getElementById('chat-box');
+            chatBox.innerHTML += `<p>${event.data}</p>`;
+            chatBox.scrollTop = chatBox.scrollHeight;
+        };
+
+        function sendMessage() {
+            var msg = document.getElementById('message').value.trim();
+            if (msg.length > 0) {
+                socket.send(username + ": " + msg);
+                document.getElementById('message').value = "";
+            }
+        }
+    </script>
+</body>
+</html>

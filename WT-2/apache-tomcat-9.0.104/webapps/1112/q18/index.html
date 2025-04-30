@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Live Stock Prices</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .stock {
+            font-size: 24px;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Live Stock Prices</h1>
+
+    <div class="stock" id="stock1">Stock A: Loading...</div>
+    <div class="stock" id="stock2">Stock B: Loading...</div>
+
+    <script>
+        var eventSource = new EventSource("/1112/stockprices");
+
+        eventSource.onmessage = function(event) {
+            var data = JSON.parse(event.data);
+            document.getElementById("stock1").textContent = "Stock A: $" + data.stockA;
+            document.getElementById("stock2").textContent = "Stock B: $" + data.stockB;
+        };
+
+        eventSource.onerror = function(event) {
+            console.log("Connection error, retrying...");
+        };
+    </script>
+
+</body>
+</html>

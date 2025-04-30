@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas Atomic Structure</title>
+</head>
+<body>
+    <canvas id="atomCanvas" width="300" height="300"></canvas>
+
+    <script>
+        const canvas = document.getElementById("atomCanvas");
+        const ctx = canvas.getContext("2d");
+
+        function drawOrbit(rotation) {
+            ctx.save();
+            ctx.translate(150, 150); // Move to center
+            ctx.rotate(rotation);
+            ctx.scale(1, 0.5); // Flatten the ellipse
+            ctx.beginPath();
+            ctx.ellipse(0, 0, 100, 50, 0, 0, Math.PI * 2);
+            ctx.strokeStyle = "blue";
+            ctx.lineWidth = 1;
+            ctx.stroke();
+            ctx.restore();
+        }
+
+        // Draw three ellipses at different angles
+        drawOrbit(0);
+        drawOrbit(Math.PI / 3);
+        drawOrbit(-Math.PI / 3);
+    </script>
+</body>
+</html>

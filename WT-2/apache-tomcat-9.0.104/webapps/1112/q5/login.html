@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Validation</title>
+</head>
+<body>
+    <div>
+        <h1>Login</h1>
+        <form id="loginForm">
+            <label for="username">Login Name:</label>
+            <input type="text" id="username" name="username" placeholder="Enter your login name" required>
+            <span id="usernameError" class="error-message"></span>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            <span id="passwordError" class="error-message"></span>
+
+            <button type="button" onclick="validateForm()">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        function validateForm() {
+            // Get form elements
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            // Get error labels
+            const usernameError = document.getElementById("usernameError");
+            const passwordError = document.getElementById("passwordError");
+
+            // Reset error messages
+            usernameError.textContent = "";
+            passwordError.textContent = "";
+
+            // Validation flags
+            let isValid = true;
+
+            // Validate username
+            const usernamePattern = /^[a-zA-Z0-9_]{1,10}$/;
+            if (!usernamePattern.test(username)) {
+                usernameError.textContent = "Login name must be alphanumeric with '_' and up to 10 characters.";
+                isValid = false;
+            }
+
+            // Validate password
+            const passwordPattern = /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,10}$/;
+            if (!passwordPattern.test(password)) {
+                passwordError.textContent = "Password must be 6-10 characters, with at least one digit and one uppercase letter.";
+                isValid = false;
+            }
+
+            // Final validation
+            if (isValid) {
+                alert("Form submitted successfully!");
+                // You can add code to submit the form here.
+		window.location = "/1112/ass1/q6/home.html"
+            }
+        }
+    </script>
+</body>
+</html>

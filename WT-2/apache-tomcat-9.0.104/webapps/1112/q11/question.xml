@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE question-paper SYSTEM "question.dtd">
+<question-paper>
+    <question no="1">
+        <text>What is the capital of France?</text>
+        <optionA>Berlin</optionA>
+        <optionB>Madrid</optionB>
+        <optionC>Paris</optionC>
+        <optionD>Rome</optionD>
+        <answer value="optionC">Paris</answer>
+    </question>
+
+    <question no="2">
+        <text>Which planet is known as the Red Planet?</text>
+        <optionA>Earth</optionA>
+        <optionB>Mars</optionB>
+        <optionC>Jupiter</optionC>
+        <optionD>Venus</optionD>
+        <answer value="optionB">Mars</answer>
+    </question>
+
+    <question no="3">
+        <text>What is 2 + 2?</text>
+        <optionA>3</optionA>
+        <optionB>4</optionB>
+        <optionC>5</optionC>
+        <optionD>6</optionD>
+        <answer value="optionB">4</answer>
+    </question>
+</question-paper>
